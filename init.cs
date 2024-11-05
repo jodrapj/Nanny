@@ -61,8 +61,14 @@ namespace Nanny
             mainLayout = new Layout()
                 .SplitColumns(
                 new Layout(renderable: new Panel(new Rows(rows[0]))),
-                new Layout(renderable: new Panel(new Rows(rows[1]))),
-                new Layout(renderable: new Panel(new Rows(rows[2])))
+                new Layout(renderable: new Panel(new Rows(rows[1]))
+                {
+                    Border = rows[1].Count > 0 ? BoxBorder.Square : BoxBorder.None,
+                }),
+                new Layout(renderable: new Panel(new Rows(rows[2]))
+                {
+                    Border = rows[2].Count > 0 ? BoxBorder.Square : BoxBorder.None,
+                })
                 );
         }
 

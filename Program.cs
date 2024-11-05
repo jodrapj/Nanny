@@ -1,5 +1,6 @@
 ﻿using Nanny;
 using Newtonsoft.Json;
+using Spectre.Console;
 
 namespace nanny
 {
@@ -12,7 +13,7 @@ namespace nanny
 
         static void Main(string[] args)
         {
-            ServerConverter serverConverter = new ServerConverter();
+            AnsiConsole.Cursor.Hide();
             instance = new Instance(servers);
             mainThread.Start();
         }
