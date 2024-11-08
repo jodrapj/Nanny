@@ -1,7 +1,8 @@
 [
   {
-    "port": null,
     "Name": "localhost",
-    "ip": "127.0.0.1"
+    "port": null,
+    "ip": "127.0.0.1",
+    "location": "Frankfurt"
   }
 ]

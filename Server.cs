@@ -6,13 +6,31 @@ namespace Nanny
     
     public class Server
     {
-        public string Name { get; set; } = "";
+        private string _name = "";
+        public string name
+        {
+            get
+            {
+                return _name != "" ? "Name: " + _name : "";
+            }
+            set => _name = value;
+        }
 
         public int? port;
 
         private string _ip;
 
         private IPStatus _status;
+
+        public string _location = "";
+        public string location
+        {
+            get
+            {
+                return _location != "" ? "Location: " + _location : "";
+            }
+            set => _location = value;
+        }
 
         public IPStatus status 
         {
@@ -21,6 +39,16 @@ namespace Nanny
                 return _status;
             }
             private set => _status = value;
+        }
+
+        private string _roundTripTime;
+        public string roundTripTime
+        {
+            get
+            {
+                return _roundTripTime;
+            }
+            private set => _roundTripTime = value;
         }
 
         public string ip
@@ -43,7 +71,7 @@ namespace Nanny
         {
             this._ip = ip;
             this.port = port;
-            this.Name = name;
+            this.name = name;
 
             options.DontFragment = true;
         }
@@ -52,6 +80,7 @@ namespace Nanny
         {
             PingReply reply = pinger.Send(ip, timeOut, buffer, options);
             status = reply.Status;
+            roundTripTime = reply.RoundtripTime.ToString();
         }
 
         public string info
@@ -60,7 +89,7 @@ namespace Nanny
             {
                 Ping();
                 var stat = status == IPStatus.Success ? "Success" : "Error";
-                return $"Host: {ip}" + ' ' + $"Status: {stat}";
+                return $" {name}\n Host: {ip}\n Status: {stat}\n Roundtrip Time: {roundTripTime} ms\n {location}";
             }
         } 
     }

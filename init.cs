@@ -31,7 +31,7 @@ namespace Nanny
                 content = new Text("");
             }
             MainPanel = new Panel(content);
-            MainPanel.Header = new PanelHeader("Nanny v0.1", Justify.Center);
+            MainPanel.Header = new PanelHeader("Nanny v0.1.2", Justify.Center);
             MainPanel.Height = Console.WindowHeight - 1;
             MainPanel.Width = Console.WindowWidth;
         }
@@ -76,7 +76,6 @@ namespace Nanny
         {
             if (servers != null)
             {
-                //SetupServerPanel(servers);
                 SetupLayout(servers);
             }
             SetupMainpanel(mainLayout);
